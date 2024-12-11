@@ -2,12 +2,14 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Logo from "@/assets/color-logo.png"
-import sampleImg from "@/assets/mock/_.jpeg"
 import LensButton from '@/components/lens-buttons'
 import ImageGrid from '@/components/imageGrid'
+import ImageCropper from '@/components/crop-image'
+import { useStore } from '@/store'
 
 export default function LensSearchPage() {
     const [activeButton, setActiveButton] = useState<"search" | "text" | "translate">("search")
+    const file = useStore((state) => state.value)
     return (
         <div className='w- bg-white h-screen overflow-hidden'>
             <div className='w-full flex justify-between items-centerp p-3 shadow-sm fixed top-0 left-0 z-10 bg-white'>
@@ -32,10 +34,15 @@ export default function LensSearchPage() {
                         </span>
                     </span>
 
+                    <span className='group px-1 cursor-pointer flex items-center relative'>
+                        <a className='mx-1 p-2 rounded-full transition-colors hover:bg-gray-200' href='#'>
+                            <img className='text-col ' src="https://ssl.gstatic.com/gb/images/bar/al-icon.png" alt="" height="24" width="24"></img>
+                        </a>
+                        <span className='opacity-0 group-hover:opacity-100 transition-opacity absolute top-11 -right-5 w-24 bg-hGray border-hGray border-1 px-1 rounded-md text-[12px] font-bold py-1 flex justify-center'>
+                            Google apps
+                        </span>
+                    </span>
 
-                    <a className='mx-1 p-2 rounded-full transition-colors hover:bg-gray-200' href='#'>
-                        <img className='text-col ' src="https://ssl.gstatic.com/gb/images/bar/al-icon.png" alt="" height="24" width="24"></img>
-                    </a>
                     <a className='mx-1 p-1 rounded-full transition-colors hover:bg-gray-200 flex justify-center items-center' href='#'>
                         <div className='w-8 h-8 rounded-full bg-blue-700 flex justify-center items-center'>
                             A
@@ -60,7 +67,8 @@ export default function LensSearchPage() {
                     </span>
 
                     <div>
-                        <Image src={sampleImg} alt='' />
+                        {/* <Image src={sampleImg} alt='' /> */}
+                        <ImageCropper file={file as File} />
                     </div>
 
                     <LensButton active={activeButton} setActive={setActiveButton} />

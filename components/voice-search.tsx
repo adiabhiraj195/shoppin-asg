@@ -3,9 +3,9 @@ import React from "react";
 const VoiceListeningUI = ({ setToggle }: { setToggle: React.Dispatch<React.SetStateAction<boolean>> }) => {
 
     return (
-        <div className="flex items-center justify-center h-screen bg-bgGray fixed top-0 left-0 w-screen">
+        <div className="flex items-center justify-center bg-bgGray absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-screen">
             <div className="text-center flex items-center justify-around w-full">
-                <p className="text-gray-400 text-xl mb-6">Listening...</p>
+                <p className="text-gray-400 text-4xl mb-6">Listening...</p>
                 {/* <div className="relative"> */}
                 <div onClick={() => setToggle(false)} className="cursor-pointer rounded-full bg-red-500 h-24 w-24 flex items-center justify-center shadow-lg">
                     <svg

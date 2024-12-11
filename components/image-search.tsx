@@ -1,16 +1,27 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useStore } from "@/store";
 
 const ImageSearchUI = ({ toggle }: { toggle: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const router = useRouter();
+    const setValue = useStore((state) => state.setValue);
+    const setImage = useStore((state) => state.setImage);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             setSelectedFile(file);
             console.log("Selected file:", file);
-            router.push("/lens")
+            setValue(file)
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                setImage(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+
+            router.push(`/lens`)
         }
 
     };
@@ -54,10 +65,10 @@ const ImageSearchUI = ({ toggle }: { toggle: React.Dispatch<React.SetStateAction
                             <input
                                 type="text"
                                 placeholder="Paste image link"
-                                className="w-full px-6 py-2 text-gray-200 bg-bgGray2 border border-gray-500 rounded-3xl placeholder-gray-400 focus:outline-none"
+                                className="w-full px-6 py-2 text-gray-200 bg-bgGray2 border border-gray-500 rounded-3xl placeholder-gray-400 focus:outline-none focus:border-blue-600"
                             />
 
-                            <button className="text-blue-300 bg-bgGray2 hover:text-white py-2 px-6 rounded-3xl border border-gray-500 ml-2 hover:bg-blue-600">
+                            <button className="text-blue-300 bg-bgGray2 hover:text-white py-2 px-6 rounded-3xl border border-gray-500 ml-2 hover:bg-bgGray">
                                 Search
                             </button>
                         </div>
