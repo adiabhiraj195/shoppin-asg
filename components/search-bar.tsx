@@ -96,7 +96,7 @@ export default function SearchBar() {
             {(!isFocused || !searchSug) &&
                 <div className='w-full flex justify-center py-3 my-6'>
                     <button className='bg-bgGray2 border rounded-md border-bgGray2 text-sm px-4 py-2 mx-2 hover:border-gray-500'>Google Search</button>
-                    <button className='bg-bgGray2 border rounded-md border-bgGray2 text-sm px-4 py-2 mx-2 hover:border-gray-500'>I'm Feeling Lucky</button>
+                    <button className='bg-bgGray2 border rounded-md border-bgGray2 text-sm px-4 py-2 mx-2 hover:border-gray-500'>I&apos;m Feeling Lucky</button>
                 </div>
             }
         </div>
