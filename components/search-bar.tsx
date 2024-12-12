@@ -7,18 +7,6 @@ import useDebouncedApiCall from './debounceApi'
 import VoiceListeningUI from './voice-search'
 import ImageSearchUI from './image-search'
 
-const dummydata = [
-    { value: 'api' },
-    { value: 'autocomplete api' },
-    { value: 'crawl api' },
-    { value: 'indexing api' },
-    { value: 'recommendations api' },
-    { value: 'rest api' },
-    { value: 'search api' },
-    { value: 'suggestions api' }
-]
-
-
 export default function SearchBar() {
     const [isFocused, setIsFocused] = useState(false)
     const [inputValue, setInputValue] = useState("")

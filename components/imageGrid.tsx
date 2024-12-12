@@ -1,5 +1,4 @@
 import React from "react";
-import sampleImg from "@/assets/mock/_.jpeg"
 import sampleIcon from "@/assets/mock/strawberry.webp"
 import Image from "next/image";
 import { useStore } from "@/store";
